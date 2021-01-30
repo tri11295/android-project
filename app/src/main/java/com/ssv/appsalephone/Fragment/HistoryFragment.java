@@ -122,8 +122,14 @@ public class HistoryFragment extends Fragment {
                     listOrder.add(order);
                 }
 
-                // Lấy thông tin detail order
-                findDetailOrder(myRef);
+                if (listOrder.size() > 0){
+                    // Lấy thông tin detail order
+                    findDetailOrder(myRef);
+                }
+                else {
+                    Toast.makeText(getContext(),"Không tìm thấy lịch sử đặt hàng",Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
@@ -151,9 +157,6 @@ public class HistoryFragment extends Fragment {
                         // set data HistoryProductAdapter
                         if (listDetailOrder.size() > 0){
                             setDataHistoryProductAdapter();
-                        }
-                        else {
-                            Toast.makeText(getContext(),"Không tìm thấy lịch sử đặt hàng",Toast.LENGTH_SHORT).show();
                         }
                     }
 

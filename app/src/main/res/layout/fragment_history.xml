@@ -43,6 +43,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:hint="Nhập Số Điện Thoại Mua Hàng"
+                android:inputType="phone"
                 android:fontFamily="sans-serif-light"
                 android:textSize="15sp"
                 android:drawableLeft="@drawable/ic_baseline_phone_iphone_24"
