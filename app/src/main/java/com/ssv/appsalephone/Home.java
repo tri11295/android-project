@@ -19,33 +19,19 @@ import java.util.List;
 
 public class Home extends AppCompatActivity {
 
-    // region Variable
-
     private List<Product> listCartProduct;
-
-    // Đếm số sản phẩm trong giỏ hàng
     private int countProduct;
-
     private AHBottomNavigation ahBotNavHome;
     private FragmentTransaction fragmentTransaction;
-
-    // endregion Variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        // Khởi tạo các item
         initItem();
-
-        // Set data cho ahBotNavHome
         setDataBotNavHome();
     }
 
-    // region  Private Menthod
-
-    // Khởi tạo các item
     private void initItem() {
         ahBotNavHome = findViewById(R.id.ahbotnav_home);
         if(listCartProduct == null){
@@ -57,25 +43,20 @@ public class Home extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    // Set data cho BotNavHome
     private void setDataBotNavHome() {
 
-        // Create items
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_product, R.drawable.ic_baseline_home_24, R.color.teal_200);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_cart, R.drawable.ic_baseline_add_shopping_cart_24, R.color.gray);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_history, R.drawable.ic_baseline_history_24, R.color.yellow);
 
-        // Add items
         ahBotNavHome.addItem(item1);
         ahBotNavHome.addItem(item2);
         ahBotNavHome.addItem(item3);
 
         ahBotNavHome.setColored(false);
 
-        // Set màu nav
         ahBotNavHome.setDefaultBackgroundColor(getResources().getColor(R.color.white));
 
-        // Khi click vào các icon trên nav
         ahBotNavHome.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
@@ -104,11 +85,6 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    // endregion Private Menthod
-
-    // region Public Menthod
-
-    // Set số lượng các sản phẩm trong giỏ hàng
     public void setCountProductInCart(int count){
         countProduct = count;
         AHNotification notification = new AHNotification.Builder()
